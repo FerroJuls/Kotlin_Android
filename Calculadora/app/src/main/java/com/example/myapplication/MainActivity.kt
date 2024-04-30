@@ -8,11 +8,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
     lateinit var tvResult: TextView
     var operand1 = ""
+    var operand2 = ""
     var operator = ""
+    var decimalClicked = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,30 +38,46 @@ class MainActivity : AppCompatActivity() {
                 operand1 = tvResult.text.toString()
                 operator = buttonText
                 tvResult.text = "0"
+                decimalClicked = false
             }
             "=" -> {
-                val operand2 = tvResult.text.toString()
-                val result = when (operator) {
-                    "+" -> operand1.toDouble() + operand2.toDouble()
-                    "-" -> operand1.toDouble() - operand2.toDouble()
-                    "*" -> operand1.toDouble() * operand2.toDouble()
-                    "/" -> operand1.toDouble() / operand2.toDouble()
-                    else -> 0.0
+                operand2 = tvResult.text.toString()
+                if (operand2.isNotEmpty()) {
+                    val result = when (operator) {
+                        "+" -> operand1.toDouble() + operand2.toDouble()
+                        "-" -> operand1.toDouble() - operand2.toDouble()
+                        "*" -> operand1.toDouble() * operand2.toDouble()
+                        "/" -> operand1.toDouble() / operand2.toDouble()
+                        else -> 0.0
+                    }
+                    tvResult.text = formatResult(result)
                 }
-                tvResult.text = result.toString()
+                decimalClicked = false
             }
             "AC" -> {
                 operand1 = ""
                 operator = ""
-                tvResult.text = "0"
+                tvResult.text = ""
+                decimalClicked = false
+            }
+            "." -> {
+                if (!decimalClicked) {
+                    tvResult.append(".")
+                    decimalClicked = true
+                }
             }
             else -> {
-                if (tvResult.text == "0" || operator.isNotEmpty()) {
+                if (tvResult.text.toString() == "0") {
                     tvResult.text = buttonText
                 } else {
                     tvResult.append(buttonText)
                 }
             }
         }
+    }
+
+    private fun formatResult(value: Double): String {
+        val decimalFormat = DecimalFormat("#.#####")
+        return decimalFormat.format(value)
     }
 }
