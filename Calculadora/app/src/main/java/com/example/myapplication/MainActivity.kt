@@ -47,11 +47,20 @@ class MainActivity : AppCompatActivity() {
                         "+" -> operand1.toDouble() + operand2.toDouble()
                         "-" -> operand1.toDouble() - operand2.toDouble()
                         "*" -> operand1.toDouble() * operand2.toDouble()
-                        "/" -> operand1.toDouble() / operand2.toDouble()
+                        "/" -> {
+                            if (operand2.toDouble() == 0.0) {
+                                val textInfinito = "ERROR"
+                                tvResult.text = textInfinito
+                                return
+                            } else {
+                                operand1.toDouble() / operand2.toDouble()
+                            }
+                        }
                         else -> 0.0
                     }
                     tvResult.text = formatResult(result)
                 }
+
                 decimalClicked = false
             }
             "AC" -> {
@@ -76,7 +85,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun formatResult(value: Double): String {
+    private fun formatResult(value: Comparable<*>): String {
         val decimalFormat = DecimalFormat("#.#####")
         return decimalFormat.format(value)
     }
