@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">tallerAndroidInterfaces</string>
+    <string name="LinearLayout">LinearLayout</string>
+    <string name="RelativeLayout">RelativeLayout</string>
+    <string name="FrameLayout">FrameLayout</string>
+    <string name="ConstraintLayout">ConstraintLayout</string>
+    <string name="CardView">CardView</string>
+    <string name="RecyclerView">RecyclerView</string>
+    <string name="ListView">ListView</string>
+    <string name="Interfaz1">Interfaz 1</string>
+    <string name="Interfaz2">Interfaz 2</string>
+    <string name="Interfaz3">Interfaz 3</string>
+    <string name="Interfaz4">Interfaz 4</string>
+</resources>

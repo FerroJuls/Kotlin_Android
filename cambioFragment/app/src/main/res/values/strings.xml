@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">cambioFragment</string>
+    <string name="botonFragme1">Fragmento 1</string>
+    <string name="botonFragme2">Fragmento 2</string>
+    <string name="botonFragme3">Fragmento 3</string>
+    <!-- texto para los fragmento -->
+    <string name="fragmento1">Fragmento 1</string>
+    <string name="fragmento2">Fragmento 2</string>
+    <string name="fragmento3">Fragmento 3</string>
+</resources>
