@@ -27,4 +27,20 @@ class MainActivity : AppCompatActivity() {
         var intent= Intent(application,RelativeLayout::class.java)
         startActivity(intent)
     }
+    fun irFrameLayout(view: View){
+        var intent= Intent(application,FrameLayout::class.java)
+        startActivity(intent)
+    }
+    fun irConstraintLayout(view: View){
+        var intent= Intent(application,ConstraintLayout::class.java)
+        startActivity(intent)
+    }
+    fun irCardView(view: View){
+        var intent= Intent(application,CardView::class.java)
+        startActivity(intent)
+    }
+    fun irRecyclerView(view: View){
+        var intent= Intent(application,RecyclerView::class.java)
+        startActivity(intent)
+    }
 }

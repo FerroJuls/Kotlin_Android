@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E6D9B3"
+    tools:context=".FrameLayout">
+
+    <Button
+        android:id="@+id/btnVolver"
+        android:layout_width="122dp"
+        android:layout_height="48dp"
+        android:backgroundTint="#000000"
+        android:text="Volver"
+        app:icon="@drawable/back_arrow_svgrepo_com"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.929" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="FrameLayout"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.067" />
+
+    <FrameLayout
+        android:layout_width="260dp"
+        android:layout_height="201dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btnPerro"
+            android:layout_width="match_parent"
+            android:layout_height="145dp"
+            android:onClick="verGato"
+            android:textSize="34sp"
+            android:visibility="gone"
+            app:icon="@drawable/dog_svgrepo_com"
+            app:iconGravity="textEnd"
+            app:iconSize="100dp" />
+
+        <Button
+            android:id="@+id/btnGato"
+            android:layout_width="260dp"
+            android:layout_height="145dp"
+            android:onClick="verPerro"
+            android:textSize="34sp"
+            app:icon="@drawable/cat_svgrepo_com"
+            app:iconGravity="textEnd"
+            app:iconSize="100dp" />
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
