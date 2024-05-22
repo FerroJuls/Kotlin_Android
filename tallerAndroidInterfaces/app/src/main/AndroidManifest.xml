@@ -13,6 +13,9 @@
         android:theme="@style/Theme.TallerAndroidInterfaces"
         tools:targetApi="31">
         <activity
+            android:name=".Interfaz1"
+            android:exported="false" />
+        <activity
             android:name=".RecyclerView"
             android:exported="false" />
         <activity

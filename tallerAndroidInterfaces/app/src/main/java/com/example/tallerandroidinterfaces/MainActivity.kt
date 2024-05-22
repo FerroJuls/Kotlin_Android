@@ -43,4 +43,8 @@ class MainActivity : AppCompatActivity() {
         var intent= Intent(application,RecyclerView::class.java)
         startActivity(intent)
     }
+    fun irInterfaz1(view: View){
+        var intent= Intent(application,Interfaz1::class.java)
+        startActivity(intent)
+    }
 }
