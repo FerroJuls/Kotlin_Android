@@ -60,8 +60,8 @@
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="131dp"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_launcher_foreground" />
+                    android:layout_height="110dp"
+                    app:srcCompat="@drawable/party_popper_svgrepo_comp" />
 
                 <TextView
                     android:id="@+id/textView3"

@@ -43,8 +43,24 @@ class MainActivity : AppCompatActivity() {
         var intent= Intent(application,RecyclerView::class.java)
         startActivity(intent)
     }
+    fun irListView(view: View){
+        var intent= Intent(application,ListView::class.java)
+        startActivity(intent)
+    }
     fun irInterfaz1(view: View){
         var intent= Intent(application,Interfaz1::class.java)
+        startActivity(intent)
+    }
+    fun irInterfaz2(view: View){
+        var intent= Intent(application,Interfaz2::class.java)
+        startActivity(intent)
+    }
+    fun irInterfaz3(view: View){
+        var intent= Intent(application,Interfaz3::class.java)
+        startActivity(intent)
+    }
+    fun irInterfaz4(view: View){
+        var intent= Intent(application,Interfaz4::class.java)
         startActivity(intent)
     }
 }
