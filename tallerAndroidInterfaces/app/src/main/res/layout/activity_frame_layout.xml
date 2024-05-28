@@ -60,9 +60,19 @@
             android:id="@+id/btnGato"
             android:layout_width="260dp"
             android:layout_height="145dp"
-            android:onClick="verPerro"
+            android:onClick="verLoro"
             android:textSize="34sp"
             app:icon="@drawable/cat_svgrepo_com"
+            app:iconGravity="textEnd"
+            app:iconSize="100dp" />
+
+        <Button
+            android:id="@+id/btnLoro"
+            android:layout_width="match_parent"
+            android:layout_height="145dp"
+            android:onClick="verPerro"
+            android:visibility="gone"
+            app:icon="@drawable/macaw_svgrepo_comdfdfgd"
             app:iconGravity="textEnd"
             app:iconSize="100dp" />
     </FrameLayout>

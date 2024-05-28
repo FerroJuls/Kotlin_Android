@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 class FrameLayout : AppCompatActivity() {
     var btnPerro:Button?=null
     var btnGato:Button?=null
+    var btnLoro:Button?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -22,6 +23,7 @@ class FrameLayout : AppCompatActivity() {
         }
         btnPerro=findViewById(R.id.btnPerro)
         btnGato=findViewById(R.id.btnGato)
+        btnLoro=findViewById(R.id.btnLoro)
 
         var btnVolver = findViewById<Button>(R.id.btnVolver)
         btnVolver.setOnClickListener {
@@ -31,9 +33,16 @@ class FrameLayout : AppCompatActivity() {
     fun verGato(view: View){
         btnPerro?.visibility=View.GONE
         btnGato?.visibility=View.VISIBLE
+        btnLoro?.visibility=View.GONE
+    }
+    fun verLoro(view: View){
+        btnPerro?.visibility=View.GONE
+        btnGato?.visibility=View.GONE
+        btnLoro?.visibility=View.VISIBLE
     }
     fun verPerro(view: View){
         btnPerro?.visibility=View.VISIBLE
         btnGato?.visibility=View.GONE
+        btnLoro?.visibility=View.GONE
     }
 }
