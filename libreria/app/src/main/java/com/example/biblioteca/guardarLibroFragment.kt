@@ -5,13 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.example.biblioteca.config.config
 import java.lang.Exception
+import java.security.Guard
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,7 +38,8 @@ class guardarLibroFragment : Fragment() {
     private lateinit var txtGenero:EditText
     private lateinit var txtNumEjemplarDisponible:EditText
     private lateinit var txtNumEjemplarOcupado:EditText
-    private lateinit var id:String
+    private var id:String=""
+    private lateinit var btnGuardar: Button
     fun guardarLibro(){
         try {
             if (id==""){// se crea el libro
@@ -51,7 +55,24 @@ class guardarLibroFragment : Fragment() {
 
                     }
                 )
-
+                {
+                    //se agregan los datos para la peticion
+                    override fun getParams(): Map<String, String> {
+                        var parametros=HashMap<String, String>()
+                        parametros.put("titulo", txtTitulo.text.toString())
+                        parametros.put("autor", txtAutor.text.toString())
+                        parametros.put("isbn", txtIsbn.text.toString())
+                        parametros.put("genero", txtGenero.text.toString())
+                        parametros.put("numEjemplarDisponible", txtNumEjemplarDisponible.text.toString())
+                        parametros.put("numEjemplarOcupado", txtNumEjemplarOcupado.text.toString())
+                        //uno por casa dato que requiera
+                        return parametros
+                    }
+                }
+                //secrea la cola de trabajo
+                val queue=Volley.newRequestQueue(context)
+                //se añade la peticion
+                queue.add(request)
             }else{// se actualiza el libro
 
             }
@@ -73,7 +94,18 @@ class guardarLibroFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_guardar_libro, container, false)
+        var view = inflater.inflate(R.layout.fragment_guardar_libro, container,false)
+        txtTitulo=view.findViewById(R.id.txtTitulo)
+        txtAutor=view.findViewById(R.id.txtAutor)
+        txtIsbn=view.findViewById(R.id.txtIsbn)
+        txtGenero=view.findViewById(R.id.txtGenero)
+        txtNumEjemplarDisponible=view.findViewById(R.id.txtNumEjemplarDisponible)
+        txtNumEjemplarOcupado=view.findViewById(R.id.txtNumEjemplarOcupado)
+        btnGuardar=view.findViewById(R.id.btnGuardar)
+        btnGuardar.setOnClickListener {
+            guardarLibro()
+        }
+        return view
     }
 
     companion object {
