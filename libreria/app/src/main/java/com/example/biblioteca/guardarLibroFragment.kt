@@ -1,5 +1,6 @@
 package com.example.biblioteca
 
+import android.media.audiofx.DynamicsProcessing.Config
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,10 +10,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.android.volley.Request
+import com.android.volley.Request.Method
 import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.JsonRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.biblioteca.config.config
+import com.example.biblioteca.models.libro
+import com.google.gson.Gson
 import java.lang.Exception
 import java.security.Guard
 
@@ -38,8 +44,45 @@ class guardarLibroFragment : Fragment() {
     private lateinit var txtGenero:EditText
     private lateinit var txtNumEjemplarDisponible:EditText
     private lateinit var txtNumEjemplarOcupado:EditText
-    private var id:String=""
+    private var id:String="e61b35b6-94f2-4c0a-97f0-055ab3d38fa7\t"
     private lateinit var btnGuardar: Button
+    /*
+     * metodo encargado de traer la informacion del libro
+     */
+    fun consultarLibro(){
+        /*
+        * solo debemos consultar si tenemos id
+        */
+        if (id!=""){
+            var request=JsonObjectRequest(
+                Method.GET,
+                config.urllibro+id, //url
+                null, //parametros
+                {response->
+                    //variable response contiene la respuesta de la api
+                    //se convierte en json a un objeto tip libro
+                    val gson= Gson()
+                    val libro:libro=gson.fromJson(response.toString(),libro::class.java)
+                    txtAutor.setText(response.getString("autor"))
+                    txtTitulo.setText(response.getString("titulo"))
+                    txtIsbn.setText(response.getString("isbn"))
+                    txtGenero.setText(response.getString("genero"))
+                    txtNumEjemplarDisponible.setText(response.getString("numEjemplarDisponible"))
+                    txtNumEjemplarOcupado.setText(response.getString("numEjemplarOcupado"))
+                    txtNumEjemplarDisponible.setText(
+                        response.getInt("numEjemplarDisponible").toString()
+                    )
+
+                var prueba=response
+                }, //respuesta correcta
+                { error->
+                    Toast.makeText(context, "Error al consultar", Toast.LENGTH_LONG).show()
+                }//error en la petición
+            )
+            var queue=Volley.newRequestQueue(context)
+            queue.add(request)
+        }
+    }
     fun guardarLibro(){
         try {
             if (id==""){// se crea el libro
@@ -73,8 +116,34 @@ class guardarLibroFragment : Fragment() {
                 val queue=Volley.newRequestQueue(context)
                 //se añade la peticion
                 queue.add(request)
-            }else{// se actualiza el libro
-
+            } else {
+                // se actualiza el libro
+                val request = object : StringRequest(
+                    Request.Method.PUT,
+                    config.urllibro +  id,
+                    Response.Listener {
+                        Toast.makeText(context, "Se actualizó correctamente", Toast.LENGTH_LONG).show()
+                    },
+                    Response.ErrorListener {
+                        Toast.makeText(context, "Error al actualizar el libro", Toast.LENGTH_LONG).show()
+                    }
+                ) {
+                    override fun getParams(): Map<String, String> {
+                        var parametros=HashMap<String, String>()
+                        parametros.put("titulo", txtTitulo.text.toString())
+                        parametros.put("autor", txtAutor.text.toString())
+                        parametros.put("isbn", txtIsbn.text.toString())
+                        parametros.put("genero", txtGenero.text.toString())
+                        parametros.put("numEjemplarDisponible", txtNumEjemplarDisponible.text.toString())
+                        parametros.put("numEjemplarOcupado", txtNumEjemplarOcupado.text.toString())
+                        //uno por casa dato que requiera
+                        return parametros
+                    }
+                }
+                // se crea la cola de trabajo
+                val queue = Volley.newRequestQueue(context)
+                // se añade la petición a la cola
+                queue.add(request)
             }
         }catch (error:Exception){
 
@@ -105,6 +174,7 @@ class guardarLibroFragment : Fragment() {
         btnGuardar.setOnClickListener {
             guardarLibro()
         }
+        consultarLibro()
         return view
     }
 
