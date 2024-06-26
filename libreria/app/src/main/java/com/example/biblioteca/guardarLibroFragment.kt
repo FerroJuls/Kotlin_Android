@@ -44,7 +44,7 @@ class guardarLibroFragment : Fragment() {
     private lateinit var txtGenero:EditText
     private lateinit var txtNumEjemplarDisponible:EditText
     private lateinit var txtNumEjemplarOcupado:EditText
-    private var id:String="e61b35b6-94f2-4c0a-97f0-055ab3d38fa7\t"
+    private var id:String="c9b05e42-50cb-4f69-8350-9ba6f1195194"
     private lateinit var btnGuardar: Button
     /*
      * metodo encargado de traer la informacion del libro
@@ -69,9 +69,7 @@ class guardarLibroFragment : Fragment() {
                     txtGenero.setText(response.getString("genero"))
                     txtNumEjemplarDisponible.setText(response.getString("numEjemplarDisponible"))
                     txtNumEjemplarOcupado.setText(response.getString("numEjemplarOcupado"))
-                    txtNumEjemplarDisponible.setText(
-                        response.getInt("numEjemplarDisponible").toString()
-                    )
+                    txtNumEjemplarDisponible.setText(response.getInt("numEjemplarDisponible").toString())
 
                 var prueba=response
                 }, //respuesta correcta
@@ -86,7 +84,7 @@ class guardarLibroFragment : Fragment() {
     fun guardarLibro(){
         try {
             if (id==""){// se crea el libro
-                val request=object :StringRequest(
+                val request=object:StringRequest(
                     Request.Method.POST,
                     config.urllibro,
                     Response.Listener {
@@ -112,7 +110,7 @@ class guardarLibroFragment : Fragment() {
                         return parametros
                     }
                 }
-                //secrea la cola de trabajo
+                //se crea la cola de trabajo
                 val queue=Volley.newRequestQueue(context)
                 //se añade la peticion
                 queue.add(request)
