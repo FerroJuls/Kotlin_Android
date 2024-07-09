@@ -6,7 +6,7 @@ class config {
     el metodo companion object sirve para almacenar las variablesn static
      */
     companion object{
-        val urlBase = "http://192.168.137.1:8080/api/v1/";
+        val urlBase = "http://10.192.80.110:8080/api/v1/";
         val urllibro = urlBase + "libro/"
     }
 }

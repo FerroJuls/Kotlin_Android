@@ -5,6 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
+import com.example.biblioteca.config.config
+import com.example.biblioteca.models.libro
+import com.google.gson.Gson
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,9 +26,68 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class detalleLibroFragment : Fragment() {
+
+    //DEFINIR LAS VARIABLES
+    private lateinit var lblTitulo: TextView
+    private lateinit var lblAutor: TextView
+    private lateinit var lblIsbn: TextView
+    private lateinit var lblGenero: TextView
+    private lateinit var lblNumEjemplarDisponible: TextView
+    private lateinit var lblNumEjemplarOcupado: TextView
+    //se asigna un id existente temporal
+    private var id:String="86abcb55-24d0-4c55-a965-4c2706f3bef6\t"
+    private lateinit var btnEditar: Button
+    private lateinit var btnEliminar: Button
+
+    /*
+       Request es peticion que hace a la API
+       StringRequest=responde un String
+       JsonRequest=responde un json
+       JsonArrayRequest=responde un arreglo de json
+        */
+    fun consultarLibro(){
+        /*
+        solo se debe consultar, si el ID
+        es diferente a vacio
+         */
+        if(id!=""){
+
+            var request= JsonObjectRequest(
+                Request.Method.GET,//metodo de la peticion
+                config.urllibro+id, //url
+                null,//parametros
+                {response->
+                    //variable response contiene la respuesta de la API
+                    //se convierte de json a un objeto tipo libro
+                    //se genera un objeto de la libreria Gson
+                    val gson= Gson()
+                    val libro: libro =gson.fromJson(response.toString(), libro::class.java)
+                    lblAutor.setText(response.getString("autor"))
+                    lblTitulo.setText(response.getString("titulo"))
+                    lblIsbn.setText(response.getString("isbn"))
+                    lblGenero.setText(response.getString("genero"))
+                    lblNumEjemplarDisponible.setText(response.getInt("numEjemplarDisponible").toString())
+                    lblNumEjemplarOcupado.setText(response.getInt("numEjemplarOcupado").toString())
+
+                },//respuesta correcta
+                { error->
+                    Toast.makeText(
+                        context,
+                        "Error al consultar",
+                        Toast.LENGTH_LONG
+                    ).show()
+                } //error en la peticion
+            )
+            //se añade la peticion
+            var queue= Volley.newRequestQueue(context)
+            queue.add(request)
+        }
+    }
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +102,26 @@ class detalleLibroFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detalle_libro, container, false)
+        val view= inflater.inflate(R.layout.fragment_detalle_libro, container, false)
+        lblAutor=view.findViewById(R.id.lblAutor)
+        lblTitulo=view.findViewById(R.id.lblTitulo)
+        lblGenero=view.findViewById(R.id.lblGenero)
+        lblIsbn=view.findViewById(R.id.lblIsbn)
+        lblNumEjemplarDisponible=view.findViewById(R.id.lblNumEjemplarDisponible)
+        lblNumEjemplarOcupado=view.findViewById(R.id.lblNumEjemplarOcupado)
+        btnEditar=view.findViewById(R.id.btnEditar)
+        btnEditar.setOnClickListener {editarLibro()}
+        btnEliminar=view.findViewById(R.id.btnEliminar)
+        btnEliminar.setOnClickListener {eliminarLibro()}
+        consultarLibro()
+        return view
+    }
+
+    fun editarLibro(){
+
+    }
+    fun eliminarLibro(){
+
     }
 
     companion object {

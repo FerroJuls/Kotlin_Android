@@ -1,6 +1,5 @@
 package com.example.biblioteca
 
-import android.media.audiofx.DynamicsProcessing.Config
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,14 +12,12 @@ import com.android.volley.Request
 import com.android.volley.Request.Method
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.JsonRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.biblioteca.config.config
 import com.example.biblioteca.models.libro
 import com.google.gson.Gson
 import java.lang.Exception
-import java.security.Guard
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,7 +41,7 @@ class guardarLibroFragment : Fragment() {
     private lateinit var txtGenero:EditText
     private lateinit var txtNumEjemplarDisponible:EditText
     private lateinit var txtNumEjemplarOcupado:EditText
-    private var id:String="c9b05e42-50cb-4f69-8350-9ba6f1195194"
+    private var id:String="86abcb55-24d0-4c55-a965-4c2706f3bef6\t"
     private lateinit var btnGuardar: Button
     /*
      * metodo encargado de traer la informacion del libro
@@ -67,9 +64,8 @@ class guardarLibroFragment : Fragment() {
                     txtTitulo.setText(response.getString("titulo"))
                     txtIsbn.setText(response.getString("isbn"))
                     txtGenero.setText(response.getString("genero"))
-                    txtNumEjemplarDisponible.setText(response.getString("numEjemplarDisponible"))
-                    txtNumEjemplarOcupado.setText(response.getString("numEjemplarOcupado"))
                     txtNumEjemplarDisponible.setText(response.getInt("numEjemplarDisponible").toString())
+                    txtNumEjemplarOcupado.setText(response.getInt("numEjemplarOcupado").toString())
 
                 var prueba=response
                 }, //respuesta correcta

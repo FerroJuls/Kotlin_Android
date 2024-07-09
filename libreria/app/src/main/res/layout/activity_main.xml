@@ -10,7 +10,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView2"
-        android:name="com.example.biblioteca.guardarLibroFragment"
+        android:name="com.example.biblioteca.detalleLibroFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
