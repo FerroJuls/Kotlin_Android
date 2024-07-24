@@ -12,4 +12,6 @@
     <string name="menu_slideshow">Biblioteca</string>
     <string name="menu_prestamo">Prestamo</string>
     <string name="menu_multa">Multa</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
