@@ -13,10 +13,51 @@
 
         <ImageView
             android:id="@+id/imageView14"
-            android:layout_width="82dp"
+            android:layout_width="66dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/book" />
+            android:src="@drawable/receipt_solid" />
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Libro:" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Usuario:" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Multa:" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Valor:" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="164dp"
@@ -33,25 +74,26 @@
                 android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/lblFechaPrestamo"
+                android:id="@+id/lblNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Autor" />
+                android:text="Nombre" />
 
             <TextView
                 android:id="@+id/lblFechaDevolucion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="ISBN" />
+                android:text="FechaDevolucion" />
 
             <TextView
-                android:id="@+id/lblNombre"
+                android:id="@+id/lblValorMulta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Genero" />
+                android:text="ValorMulta" />
+
         </LinearLayout>
 
         <LinearLayout

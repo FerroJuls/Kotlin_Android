@@ -22,9 +22,9 @@ class adapterLibro
 
         init {
             lblTitulo=itemView.findViewById(R.id.lblTitulo)
-            lblAutor=itemView.findViewById(R.id.lblAutor)
-            lblISBN=itemView.findViewById(R.id.lblISBN)
-            lblGenero=itemView.findViewById(R.id.lblGenero)
+            lblAutor=itemView.findViewById(R.id.lblFechaPrestamo)
+            lblISBN=itemView.findViewById(R.id.lblFechaDevolucion)
+            lblGenero=itemView.findViewById(R.id.lblNombre)
 
         }
     }

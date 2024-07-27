@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.prestamo.PrestamoFragment">
+    tools:context=".ui.multa.MultaFragment">
 
     <TextView
-        android:id="@+id/text_prestamo"
+        android:id="@+id/text_multa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -84,7 +84,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RVPrestamo"
+        android:id="@+id/RVMulta"
         android:layout_width="364dp"
         android:layout_height="598dp"
         app:layout_constraintBottom_toBottomOf="parent"

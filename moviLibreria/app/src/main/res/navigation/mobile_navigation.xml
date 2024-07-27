@@ -28,4 +28,10 @@
         android:name="com.example.movillibreria.ui.prestamo.PrestamoFragment"
         android:label="@string/menu_prestamo"
         tools:layout="@layout/fragment_prestamo" />
+
+    <fragment
+        android:id="@+id/nav_multa"
+        android:name="com.example.movillibreria.ui.multa.MultaFragment"
+        android:label="@string/menu_multa"
+        tools:layout="@layout/fragment_multa" />
 </navigation>
