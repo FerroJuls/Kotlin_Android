@@ -1,6 +1,5 @@
 package com.example.movillibreria.ui.gallery
 
-import android.graphics.Bitmap.Config
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
+import com.example.biblioteca.config.config
 import com.example.movillibreria.adapters.adapterUsers
 import com.example.movillibreria.databinding.FragmentGalleryBinding
 import com.example.movillibreria.models.users
@@ -30,7 +30,8 @@ class GalleryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val galleryViewModel = ViewModelProvider(this).get(GalleryViewModel::class.java)
+        val galleryViewModel =
+            ViewModelProvider(this).get(GalleryViewModel::class.java)
 
         _binding = FragmentGalleryBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -49,11 +50,10 @@ class GalleryFragment : Fragment() {
     }
 
     private fun cargarUsuarios() {
-        //val url = "http://localhost:8080/api/v1/usuario/" // Asegúrate de usar la dirección IP correcta
         try {
             val request = JsonArrayRequest(
                 Request.Method.GET,
-                "http://10.192.80.159:8080/api/v1/usuario/",
+                config.urlUsers,
                 null,
                 { response ->
                     parseJsonResponse(response)
@@ -99,7 +99,6 @@ class GalleryFragment : Fragment() {
             )
             listUsers.add(user)
         }
-        //adapterUsers.notifyDataSetChanged() // Notifica al adaptador que los datos han cambiado
     }
 
     override fun onDestroyView() {

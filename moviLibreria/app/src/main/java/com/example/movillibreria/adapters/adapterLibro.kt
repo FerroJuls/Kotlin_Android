@@ -15,18 +15,10 @@ class adapterLibro
 ): RecyclerView.Adapter<adapterLibro.MyHolder>()
 {
     inner class MyHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        lateinit var lblTitulo: TextView
-        lateinit var lblAutor: TextView
-        lateinit var lblISBN: TextView
-        lateinit var lblGenero: TextView
-
-        init {
-            lblTitulo=itemView.findViewById(R.id.lblTitulo)
-            lblAutor=itemView.findViewById(R.id.lblFechaPrestamo)
-            lblISBN=itemView.findViewById(R.id.lblFechaDevolucion)
-            lblGenero=itemView.findViewById(R.id.lblNombre)
-
-        }
+        val lblTitulo: TextView = itemView.findViewById(R.id.lblTitulo)
+        val lblAutor: TextView = itemView.findViewById(R.id.lblAutor)
+        val lblIsbn: TextView = itemView.findViewById(R.id.lblIsbn)
+        val lblGenero: TextView = itemView.findViewById(R.id.lblGenero)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): adapterLibro.MyHolder {
@@ -34,11 +26,11 @@ class adapterLibro
         return MyHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: adapterLibro.MyHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyHolder, position: Int) {
         val libro=listLibro[position]
         holder.lblTitulo.text=libro.titulo
         holder.lblAutor.text=libro.autor
-        holder.lblISBN.text=libro.ISBN
+        holder.lblIsbn.text=libro.isbn
         holder.lblGenero.text=libro.genero
     }
 
