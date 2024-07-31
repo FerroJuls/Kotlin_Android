@@ -59,8 +59,8 @@ class detalleLibroFragment : Fragment() {
                     //variable response contiene la respuesta de la API
                     //se convierte de json a un objeto tipo libro
                     //se genera un objeto de la libreria Gson
-                    val gson= Gson()
-                    val libro: libro =gson.fromJson(response.toString(), libro::class.java)
+                    //val gson= Gson()
+                    //val libro: libro =gson.fromJson(response.toString(), libro::class.java)
                     lblAutor.setText(response.getString("autor"))
                     lblTitulo.setText(response.getString("titulo"))
                     lblIsbn.setText(response.getString("isbn"))

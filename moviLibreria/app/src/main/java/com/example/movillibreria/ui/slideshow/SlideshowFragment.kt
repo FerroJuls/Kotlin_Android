@@ -12,6 +12,7 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
 import com.example.biblioteca.config.config
+import com.example.movillibreria.R
 import com.example.movillibreria.adapters.adapterLibro
 import com.example.movillibreria.adapters.adapterUsers
 import com.example.movillibreria.databinding.FragmentSlideshowBinding
@@ -63,6 +64,15 @@ class SlideshowFragment : Fragment() {
 
                     val recyclerView = binding.RVLibro
                     recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                    adapterLibro.onClick={
+                        val bundle= Bundle()
+                        //bundle.putInt("idLibro",it.idLibro("id"))
+                        //val transaction=requireFragmentManager().beginTransaction()
+                        //val fragmento = SlideshowFragment()
+                        //fragmento.arguments=bundle
+                        //transaction.replace(R.id.SlideshoViewModel,fragmento).commit()
+                        //transaction.addToBackStack(null)
+                    }
                     recyclerView.adapter = adapterLibro
 
                 },
@@ -91,6 +101,7 @@ class SlideshowFragment : Fragment() {
         for (i in 0 until response.length()) {
             val libroJson: JSONObject = response.getJSONObject(i)
             val libro = libro(
+                idLibro = libroJson.getString("idLibro"),
                 titulo = libroJson.getString("titulo"),
                 autor = libroJson.getString("autor"),
                 isbn = libroJson.getString("isbn"),

@@ -107,7 +107,7 @@ class PrestamoFragment : Fragment() {
                 usuario = nombreUsuario
             )
 
-            listPrestamo                                       .add(prestamo) // Agrega el préstamo a la lista
+            listPrestamo.add(prestamo) // Agrega el préstamo a la lista
         }
     }
 

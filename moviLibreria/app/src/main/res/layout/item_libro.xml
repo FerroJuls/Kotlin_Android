@@ -74,7 +74,7 @@
                 android:layout_height="5dp" />
 
             <Button
-                android:id="@+id/button17"
+                android:id="@+id/btnEliminar"
                 android:layout_width="29dp"
                 android:layout_height="35dp"
                 android:backgroundTint="#000000"
